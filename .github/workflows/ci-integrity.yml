@@ -53,7 +53,7 @@ jobs:
 
       - name: Linter
         run: |
-          yarn lint
+          yarn g:lint
 
       # - name: Build
       #   run: |
@@ -61,4 +61,4 @@ jobs:
 
       - name: Unit tests
         run: |
-          yarn test
+          yarn g:test
