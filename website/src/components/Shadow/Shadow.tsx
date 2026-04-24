@@ -2,7 +2,7 @@
 
 // https://gist.github.com/janily/04d7fb0861e053d4679b38743ffc05a7
 import type { ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export const Shadow = ({
@@ -14,21 +14,24 @@ export const Shadow = ({
   children: ReactNode;
 }) => {
   const [shadowRoot, setShadowRoot] = useState<ShadowRoot | null>(null);
-  const nodeRef = useRef<HTMLDivElement>(null);
+  const modeRef = useRef(mode);
+  modeRef.current = mode;
 
-  useEffect(() => {
-    if (!nodeRef.current || shadowRoot) return;
-
+  const setHostRef = useCallback((node: HTMLDivElement | null) => {
+    if (!node) {
+      setShadowRoot(null);
+      return;
+    }
     try {
-      const root = nodeRef.current.attachShadow({ mode });
+      const root = node.attachShadow({ mode: modeRef.current });
       setShadowRoot(root);
     } catch (error) {
       console.warn('Failed to attach shadow root:', error);
     }
-  }, [mode, shadowRoot]);
+  }, []);
 
   return (
-    <div {...props} ref={nodeRef}>
+    <div {...props} ref={setHostRef}>
       {shadowRoot && createPortal(children, shadowRoot)}
     </div>
   );

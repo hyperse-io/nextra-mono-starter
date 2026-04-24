@@ -13,9 +13,11 @@ export const OverviewPage: FC<{
 
   return getIndexPageMap(pageMap).map((pageItem, index) => {
     if (!Array.isArray(pageItem)) {
+      // eslint-disable-next-line @eslint-react/no-array-index-key
       return <h2 key={index}>{pageItem.title}</h2>;
     }
     return (
+      // eslint-disable-next-line @eslint-react/no-array-index-key
       <Cards key={index}>
         {pageItem.map((item) => {
           const icon = item.frontMatter?.icon;

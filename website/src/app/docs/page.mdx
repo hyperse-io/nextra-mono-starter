@@ -7,6 +7,7 @@ description:
 
 import { cloneElement } from 'react';
 import { Cards, Image } from 'nextra/components';
+import { SITE_BASE_PATH } from '@/config/site';
 
 export default function MdxLayout(props) {
   return cloneElement(props.children, {
@@ -28,10 +29,20 @@ To start using Nextra, you need to select a theme first:
 
 <Cards num={2}>
   <Cards.Card arrow title="Documentation theme" href="/docs/docs-theme/start">
-    <>![Documentation theme screenshot](/assets/docs-theme.png)</>
+    <>
+      <Image
+        src={`${SITE_BASE_PATH}/assets/docs-theme.png`}
+        alt="Documentation theme screenshot"
+      />
+    </>
   </Cards.Card>
   <Cards.Card arrow title="Blog theme" href="/docs/blog-theme/start">
-    <>![Blog theme screenshot](/assets/blog-theme.png)</>
+    <>
+      <Image
+        src={`${SITE_BASE_PATH}/assets/blog-theme.png`}
+        alt="Blog theme screenshot"
+      />
+    </>
   </Cards.Card>
 </Cards>
 

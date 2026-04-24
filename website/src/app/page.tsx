@@ -3,11 +3,12 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { MdxIcon } from 'nextra/icons';
 import { Link } from 'nextra-theme-docs';
-import docsCardDark from 'public/assets/card-1.dark.png';
-import docsCard from 'public/assets/card-1.png';
 import { Feature, Features } from '@/components/Features';
 import { ArrowRightIcon } from '@/components/Icons';
 import { MotionDiv, MotionH3 } from '@/components/Motion/FramerMotion';
+import { SITE_BASE_PATH } from '@/config/site';
+import docsCardDark from '../../public/assets/card-1.dark.png';
+import docsCard from '../../public/assets/card-1.png';
 import styles from './page.module.css';
 import './page.css';
 
@@ -124,7 +125,10 @@ const IndexPage: FC = () => {
             <Feature
               index={4}
               centered
-              className="flex flex-col items-center justify-center bg-[url(/assets/gradient-bg.jpeg)] bg-cover bg-center text-white"
+              className="flex flex-col items-center justify-center bg-cover bg-center text-white"
+              style={{
+                backgroundImage: `url('${SITE_BASE_PATH}/assets/gradient-bg.jpeg')`,
+              }}
               href="/docs/guide/markdown"
             >
               <MdxIcon className="w-4/6 [filter:drop-shadow(0_2px_10px_rgba(0,0,0,.1))]" />
@@ -235,7 +239,10 @@ const IndexPage: FC = () => {
                 playsInline
                 className="x:focus-visible:nextra-focus block dark:hidden"
               >
-                <source src="/assets/search.mp4" type="video/mp4" />
+                <source
+                  src={`${SITE_BASE_PATH}/assets/search.mp4`}
+                  type="video/mp4"
+                />
               </video>
               <video
                 autoPlay
@@ -244,7 +251,10 @@ const IndexPage: FC = () => {
                 playsInline
                 className="x:focus-visible:nextra-focus hidden -translate-x-4 dark:block"
               >
-                <source src="/assets/search-dark.mp4" type="video/mp4" />
+                <source
+                  src={`${SITE_BASE_PATH}/assets/search-dark.mp4`}
+                  type="video/mp4"
+                />
               </video>
             </Feature>
             <Feature
@@ -253,8 +263,7 @@ const IndexPage: FC = () => {
               id="fs-card"
               style={{
                 color: 'white',
-                backgroundImage:
-                  'url(/assets/routing.png), url(/assets/gradient-bg.jpeg)',
+                backgroundImage: `url(${SITE_BASE_PATH}/assets/routing.png), url(${SITE_BASE_PATH}/assets/gradient-bg.jpeg)`,
                 backgroundSize: '140%, 180%',
                 backgroundPosition: '130px -8px, top',
                 backgroundRepeat: 'no-repeat',

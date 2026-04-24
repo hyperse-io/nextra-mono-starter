@@ -6,8 +6,14 @@ import { getPageMap } from 'nextra/page-map';
 import { Footer, Layout, Link, Navbar } from 'nextra-theme-docs';
 import cn from 'clsx';
 import { Logo } from '@/components/Icons/Logo';
+import { SITE_BASE_PATH } from '@/config/site';
 import xyflow from './showcase/_logos/xyflow.png';
 import './globals.css';
+
+const siteAssetCssVars = `:root {
+  --nextra-starter-syntax-highlighting: url('${SITE_BASE_PATH}/assets/syntax-highlighting.svg');
+  --nextra-starter-high-contrast: url('${SITE_BASE_PATH}/assets/high-contrast.png');
+}`;
 
 export const metadata: Metadata = {
   description: 'Make beautiful websites with Next.js & MDX.',
@@ -103,6 +109,7 @@ const RootLayout: FC<{
     <html lang="en" suppressHydrationWarning>
       <Head />
       <body>
+        <style dangerouslySetInnerHTML={{ __html: siteAssetCssVars }} />
         <Layout
           banner={banner}
           navbar={navbar}

@@ -1,6 +1,7 @@
 import nextra from 'nextra';
 import { z } from 'zod';
 import { createNextConfig, createNextConfigEnv } from '@hyperse/next-config';
+import { SITE_BASE_PATH } from './src/config/site';
 
 const withNextra = nextra({
   latex: true,
@@ -24,7 +25,13 @@ const buildEnv = createNextConfigEnv(
 
 export default createNextConfig(
   {
-    basePath: '/nextra-mono-starter',
+    basePath: SITE_BASE_PATH,
+    turbopack: {
+      resolveAlias: {
+        // Next.js 16 + Turbopack: `@vercel/turbopack-next/mdx-import-source` may not resolve; point at the app MDX provider.
+        'next-mdx-import-source-file': './mdx-components.tsx',
+      },
+    },
     output: buildEnv.NEXT_BUILD_ENV_OUTPUT,
     images: {
       unoptimized:
