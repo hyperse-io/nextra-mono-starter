@@ -1,0 +1,4 @@
+:HL["/nextra-mono-starter/_next/static/chunks/0u.pak1g202hj.css","style"]
+:HL["/nextra-mono-starter/_next/static/chunks/02~yba1~f~lg2.css","style"]
+:HL["/nextra-mono-starter/_next/static/chunks/0ccpe9h6h6~2j.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"docs","param":null,"prefetchHints":0,"slots":{"children":{"name":"guide","param":null,"prefetchHints":0,"slots":{"children":{"name":"link","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}}}},"staleTime":300,"buildId":"1xkhYGfAScZXxhs9x6Z95"}
